@@ -1,16 +1,10 @@
+/* Main container */
 body {
-    background-color: grey;
+    background-image: url(/assets/Capture.PNG);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     text-align: justify;
-}
-
-h1 {
-    
-}
-
-
-img {
-    width: 50px;
-    border-radius: 15px;
 }
 
 /* Navbar container */
@@ -41,7 +35,7 @@ img {
     font-size: 16px;
     border: none;
     outline: none;
-    color: white;
+    color: black;
     padding: 14px 16px;
     background-color: inherit;
     font-family: inherit; /* Important for vertical align on mobile phones */
@@ -82,3 +76,22 @@ img {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  a {
+    color: #112d4e
+  }
+
+  
+/* Page Specific Container */
+
+/* Contact Me Page */
+.contact_me {
+    text-align: center;
+}
+
+
+.social_img {
+    width: 45px;
+    border-radius: 22.5px;
+}
+
