@@ -1,7 +1,7 @@
 /* Main container */
 body {
     /* background-image: url(/assets/Capture.PNG); */
-    background-color: beige;
+    background-color: burlywood;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -23,6 +23,7 @@ p {
     overflow: hidden;
     background-color: #333;
     font-family: Arial;
+    align-self: center;
   }
   
   /* Links inside the navbar */
