@@ -1,10 +1,21 @@
 /* Main container */
 body {
-    background-image: url(/assets/Capture.PNG);
+    /* background-image: url(/assets/Capture.PNG); */
+    background-color: beige;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     text-align: justify;
+}
+
+p {
+    color: black;
+    text-align: justify;
+    text-decoration: double;
+    padding-top: 100px;
+    padding-left: 450px;
+    padding-right: 450px;
+
 }
 
 /* Navbar container */
@@ -81,7 +92,7 @@ body {
     color: #112d4e
   }
 
-  
+
 /* Page Specific Container */
 
 /* Contact Me Page */
