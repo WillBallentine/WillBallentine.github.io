@@ -3,6 +3,7 @@
     margin: 0;
     font-family: 'Josefin Sans', sans-serif;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .hero {
@@ -134,7 +135,7 @@ h4{
 
 .about img{
     height: auto;
-    width: 450px;
+    width: 500px;
 }
 
 .about-text{
@@ -149,4 +150,247 @@ h4{
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.about-text h2 {
+    color: white;
+    font-size: 75px;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+}
+
+.about-text h5 {
+    color: white;
+    letter-spacing: 2px;
+    font-size: 22px;
+    margin-bottom: 25px;
+    text-transform: capitalize;
+}
+
+.about-text p {
+    color: #fcfc;
+    letter-spacing: 1px;
+    line-height: 28px;
+    font-size: 18px;
+    margin-bottom: 45px;
+}
+
+button {
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 13px 30px;
+    border-radius: 30px;
+    transition: .4s;
+}
+
+button:hover{
+    background-color: transparent;
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.projects{
+    background: #101010;
+    width: 100%;
+    padding: 100px 0px;
+}
+
+.title{
+    color: white;
+    font-size: 75px;
+    width: 1130px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px
+}
+
+.card{
+    height: 365px;
+    width: 335px;
+    padding: 20px 35px;
+    background: #191919;
+    border-radius: 20px;
+    margin: 15px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.card i{
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    margin: 20px 0px;
+    color: red;
+}
+
+h5{
+    color: white;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.pra p{
+    color: #fcfc;
+    font-size: 18px;
+    line-height: 20px;
+    margin-bottom: 25px;
+}
+
+.card .button{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 9px 22px;
+    border-radius: 30px;
+    transition: .4s;
+}
+
+.card .button:hover{
+    background-color: transparent;
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+.skills {
+    width: 100%;
+    height: 290px;
+    background: #191919;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h5{
+    color: white;
+    font-size: 23px;
+    margin-bottom: 15px;
+    margin-top: 150px;
+}
+
+.column{
+    float: left;
+    width: 50%;
+    color: #fcfc;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    line-height: 23px;
+    margin-bottom: 25px;
+    padding-left: 17%;
+}
+
+.row::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.row i{
+    font-size: 15px;
+    padding-right: 5px;
+    color: red;
+}
+
+.contact-me{
+    width: 100%;
+    height: 290px;
+    background: #191919;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contact-me p{
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    margin-top: 50px;
+}
+
+.contact-me .button-two{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 13px 30px;
+    border-radius: 30px;
+    transition: .4s;
+}
+
+.contact-me .button-two:hover{
+    background-color: transparent;
+    border: 2px solid red;
+    cursor: pointer;
+}
+
+footer{
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #101010;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+footer p:nth-child(1){
+    font-size: 30px;
+    color: white;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+footer p:nth-child(2){
+    color: white;
+    font-size: 17px;
+    width: 500px;
+    text-align: center;
+    line-height: 26px;
+}
+
+.social {
+    display: flex;
+}
+
+.social a{
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+    border-radius: 50%;
+    margin: 22px 10px;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.social:hover{
+    transform: scale(1.3);
+    transition: .3s;
+}
+
+.end{
+    position: absolute;
+    color: red;
+    bottom: 35px;
+    font-size: 14px;
 }
