@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="GQMe0hauQwS8VWLjG-J0yVTgQu0etzfgvPTuPYY90jM"
+    />
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.4.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@holoviz/panel@0.14.0/dist/panel.min.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-env>
+        - pandas
+        - panel
+        - numpy
+        - hvplot
+    </py-env>
+    <title>Will Ballentine | Beautifully Effective Code</title>
+    <link rel="stylesheet" type="text/css" href="/style/main.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Josefin+sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <!-- hero section start  -->
+    <div class="hero">
+      <nav>
+        <h2 class="logo">Beautifully <span>Effective</span></h2>
+        <ul>
+          <li><a href="/index.html">Home</a></li>
+          <li><a href="#projectdetails">Project Details</a></li>
+          <li><a href="#">Jupyter Notebook</a></li>
+          <li><a href="#">Placeholder</a></li>
+          <li><a href="#">Placeholder</a></li>
+        </ul>
+        <a href="#" class="btn">Resume</a>
+      </nav>
+      <div class="content">
+        <h4>November 2022</h4>
+        <h1>Covid-19 <span>Dashboard</span></h1>
+        <h3>A dashboard to analyze the impact of Covid on US States.</h3>
+      </div>
+    </div>
+
+    <!-- Project Details Start -->
+    <section class="project_pres" id="projectdetails">
+      <div class="main">
+        <div>
+          <py-script id="dashboard">
+            import pandas as pd 
+            import numpy as np 
+            import panel as pn
+            pn.extension('tabulator') 
+            import hvplot.pandas
+            from pyodide.http import open_url 
+            
+            url = 'https://raw.githubusercontent.com/WillBallentine/cov_dashboard/main/United_States_COVID-19_Cases_and_Deaths_by_State_over_Time_-_ARCHIVED.csv'
+            url_content = open_url(url)
+            
+            if 'data' not in pn.state.cache.keys(): 
+                df = pd.read_csv(url_content)
+                pn.state.cache['data'] = df.copy() 
+            else: 
+                df = pn.state.cache['data']
+
+            df['submission_date'] = pd.to_datetime(df['submission_date']) 
+            df['year'] = pd.DatetimeIndex(df['submission_date']).year 
+            df['month'] = pd.DatetimeIndex(df['submission_date']).month 
+            months = set(pd.DatetimeIndex(df['submission_date']).month) 
+            years = set(pd.DatetimeIndex(df['submission_date']).year) 
+            year = [] 
+            for i in years: 
+                year.append(i) 
+                
+            month = [] 
+            for i in months: 
+                month.append(i) 
+            df = df.fillna(0) 
+            idf = df.interactive() 
+            
+
+            state_case_select = pn.widgets.Select(name="State Select", options=['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']) 
+            state_death_select = pn.widgets.Select(name="State Select", options=['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY']) 
+ 
+
+
+            
+            month_case_select = pn.widgets.RadioButtonGroup(name='Month', options=month, button_type='success' )
+            year_case_select = pn.widgets.RadioButtonGroup( name='Year', options=year, button_type='success' ) 
+            month_death_select = pn.widgets.RadioButtonGroup( name='Month', options=month, button_type='success' ) 
+            year_death_select = pn.widgets.RadioButtonGroup( name='Year', options=year, button_type='success' ) 
+            
+            tot_case_pipeline = (idf[((idf.state) == state_case_select) & ((idf.month) == month_case_select) & ((idf.year) == year_case_select)]) 
+            tot_deaths_pipeline = (idf[((idf.state) == state_death_select) & ((idf.month) == month_death_select) & ((idf.year) == year_death_select)])
+
+            
+            tot_plot = tot_case_pipeline.hvplot(kind='scatter', x='submission_date', by='state', y='tot_cases', title="Total Cases by state", color='red', height= 500, width=500, size=60) 
+
+
+            deaths_scatterplot = tot_deaths_pipeline.hvplot(x='submission_date', y='tot_death', size=60, kind="scatter", height = 500, width=500, title="Total Deaths by State") 
+
+
+            template = pn.template.FastListTemplate( 
+                title='Covid Cases by State', 
+                sidebar=[pn.pane.Markdown("# Covid-19 Cases by State Reports"), 
+                        pn.pane.Markdown("#### Covid, while largely under conrol, had a massive impact on our States over the last three years."), 
+                        pn.pane.Markdown("## Select State"), 
+                        ],
+                main=[pn.Row(pn.Column(month_case_select, year_case_select, state_case_select, 
+                                        tot_plot.panel(width=900), margin=(0,25)),
+                            (pn.Column(month_death_select, year_death_select, state_death_select, 
+                            deaths_scatterplot.panel(width=900), margin=(0,25)))), 
+            ], 
+                accent_base_color="#88d8b0",
+                header_background="#88d8b0", 
+            ) 
+            template.servable();
+          </py-script>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
