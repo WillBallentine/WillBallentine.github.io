@@ -271,13 +271,13 @@ h5{
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    margin-top: 100px;
 }
 
 h5{
     color: white;
     font-size: 23px;
     margin-bottom: 15px;
-    margin-top: 150px;
 }
 
 .column{
@@ -319,7 +319,6 @@ h5{
     font-size: 30px;
     font-weight: bold;
     margin-bottom: 25px;
-    margin-top: 50px;
 }
 
 .contact-me .button-two{
