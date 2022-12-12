@@ -429,9 +429,13 @@ h1{
     font-size: 65px;
 }
 
-/* .project_pres {
+.project_pres {
     width: 100%;
-    padding: 1000px 1000px;
+    padding: 100px 100px;
     background-color: #191919;
 }
- */
+
+.project_pres .main {
+    color: #fcfc;
+    font-size: 23px;
+}
