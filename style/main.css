@@ -181,6 +181,23 @@ h4{
     margin-bottom: 45px;
 }
 
+.main .button-one{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    border: 2px solid transparent;
+    font-weight: bold;
+    padding: 13px 30px;
+    border-radius: 30px;
+    transition: .4s;
+}
+
+.main .button-one:hover{
+    background-color: transparent;
+    border: 2px solid red;
+    cursor: pointer;
+}
+
 button {
     background-color: red;
     color: white;
