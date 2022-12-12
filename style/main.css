@@ -17,12 +17,18 @@
 }
 
 nav {
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-top: 45px;
     padding-left: 8%;
     padding-right: 8%;
+    padding-bottom: 1%;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    background-color: #101010;
 }
 
 .logo {
