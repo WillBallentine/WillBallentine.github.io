@@ -50,7 +50,7 @@ init_doc()
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[14]:
+# In[4]:
 
 
 import pandas as pd
@@ -61,7 +61,7 @@ pn.extension('tabulator')
 import hvplot.pandas
 
 
-# In[15]:
+# In[5]:
 
 
 if 'data' not in pn.state.cache.keys():
@@ -74,7 +74,7 @@ else:
 df
 
 
-# In[13]:
+# In[6]:
 
 
 #Variable set for radial buttons
@@ -93,19 +93,19 @@ for i in months:
     month.append(i)
 
 
-# In[ ]:
+# In[7]:
 
 
 df = df.fillna(0)
 
 
-# In[ ]:
+# In[8]:
 
 
 idf = df.interactive()
 
 
-# In[ ]:
+# In[9]:
 
 
 #Define panel widgets
@@ -115,7 +115,7 @@ state_case_select
 state_death_select
 
 
-# In[ ]:
+# In[10]:
 
 
 #define radial buttons for charts
@@ -140,6 +140,18 @@ month_death_select = pn.widgets.RadioButtonGroup(
 year_death_select = pn.widgets.RadioButtonGroup(
     name='Year',
     options=year,
+    button_type='success'
+)
+
+death_case_select = pn.widgets.RadioButtonGroup(
+    name="Deaths",
+    options=["tot_death", "tot_cases"],
+    button_type='success'
+)
+
+case_death_select = pn.widgets.RadioButtonGroup(
+    name="Deaths",
+    options=["tot_death", "tot_cases"],
     button_type='success'
 )
 
@@ -171,21 +183,15 @@ tot_deaths_pipeline
 # In[ ]:
 
 
-tot_plot = tot_case_pipeline.hvplot(kind='scatter', x='submission_date', by='state', y='tot_cases', title="Total Cases by state", color='red', height= 500, width=500, size=60)
+tot_plot = tot_case_pipeline.hvplot(kind='scatter', x='submission_date', by='state', y=case_death_select, title="Total Cases by state", color='red', height= 500, width=500, size=60)
 tot_plot
 
 
 # In[ ]:
 
 
-deaths_scatterplot = tot_deaths_pipeline.hvplot(x='submission_date', y='tot_death', size=60, kind="scatter", height = 500, width=500, title="Total Deaths by State")
+deaths_scatterplot = tot_deaths_pipeline.hvplot(x='submission_date', y=death_case_select, size=60, kind="scatter", height = 500, width=500, title="Total Deaths by State")
 deaths_scatterplot
-
-
-# In[ ]:
-
-
-#avg_death_pipeline = (idf[(idf.state) == state_select])
 
 
 # In[ ]:
@@ -197,9 +203,9 @@ template = pn.template.FastListTemplate(
     sidebar=[pn.pane.Markdown("# Covid-19 Cases by State Reports"), 
              pn.pane.Markdown("#### Covid, while largely under conrol, had a massive impact on our States over the last three years."),    
              ],
-    main=[pn.Row(pn.Column(month_case_select, year_case_select, state_case_select,
+    main=[pn.Row(pn.Column(month_case_select, year_case_select, state_case_select, case_death_select,
                            tot_plot.panel(width=900), margin=(0,25)),
-                 (pn.Column(month_death_select, year_death_select, state_death_select,
+                 (pn.Column(month_death_select, year_death_select, state_death_select, death_case_select,
                  deaths_scatterplot.panel(width=900), margin=(0,25)))), 
 ],
     accent_base_color="#88d8b0",
@@ -207,12 +213,6 @@ template = pn.template.FastListTemplate(
 )
 # template.show()
 template.servable();
-
-
-# In[ ]:
-
-
-
 
 
 

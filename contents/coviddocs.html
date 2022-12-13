@@ -31,9 +31,8 @@
         <ul>
           <li><a href="/index.html">Home</a></li>
           <li><a href="#projectdetails">Project Details</a></li>
-          <li><a href="#">Jupyter Notebook</a></li>
-          <li><a href="#">Placeholder</a></li>
-          <li><a href="#">Placeholder</a></li>
+          <li><a href="#jupyter">Jupyter Notebook</a></li>
+          <li><a href="#demo">Demo</a></li>
         </ul>
         <a href="#" class="btn">Resume</a>
       </nav>
@@ -48,12 +47,26 @@
     <section class="project_pres" id="projectdetails">
       <div class="main">
         <div>
-          <p>This is where the description of the project will go</p>
+          <p>
+            Covid-19 has had a severe impact on our world in the last two years.
+            I wanted to have a way to quickly analyze and understand that impact
+            in a more granular way. So I built this dashboard that utilizes a
+            dataset from the CDC which contains the daily reports from each US
+            state over the last almost 3 years. The way this dashboard is setup
+            is meant to allow you to compare a state's total number of cases to
+            its total number of deaths or compare cases or deaths between two
+            states to see the variance in the impact. Below you will find the
+            Jupyter notebook containing the code for the dashboard as well as a
+            demo of the dashboard at the bottom.
+          </p>
         </div>
       </div>
     </section>
 
-    <div class="iframe-container">
+    <div class="iframe-container" id="jupyter">
+      <iframe src="/cov_cases_dash_view.html" frameborder="0"></iframe>
+    </div>
+    <div class="iframe-container" id="demo">
       <iframe src="/cov_cases_dash.html" frameborder="0"></iframe>
     </div>
   </body>
